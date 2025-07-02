@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyneStore - Welcome</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-dark: #020617;
+      --accent: #f59e42;
+      --accent2: #22d3ee;
+      --bg: #18181b;
+      --surface: #23272f;
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --cta: #f59e42;
+      --cta-hover: #ea580c;
+      --border: #334155;
+      --shadow: 0 4px 32px #0f172a44;
+    }
+    body.light {
+      --primary: #f1f5f9;
+      --primary-dark: #e2e8f0;
+      --accent: #f59e42;
+      --accent2: #2563eb;
+      --bg: #f4f6fa;
+      --surface: #fff;
+      --text: #18181b;
+      --muted: #64748b;
+      --cta: #f59e42;
+      --cta-hover: #ea580c;
+      --border: #e5e7eb;
+      --shadow: 0 4px 32px #2563eb22;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background 0.4s, color 0.4s;
+    }
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      background: var(--surface);
+      box-shadow: 0 2px 12px #0f172a22;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      height: 64px;
+      transition: background 0.4s, color 0.4s;
+    }
+    .navbar-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .navbar-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .navbar-links a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--accent2);
+      transition: width 0.2s;
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+    }
+    .navbar-links a:hover:after {
+      width: 100%;
+    }
+    .toggle-btn {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+      margin-left: 18px;
+    }
+    .toggle-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--accent2);
+      transition: fill 0.2s;
+    }
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(120deg, #0f172a 60%, #23272f 100%);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 64px;
+    }
+    .hero-bg-anim {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 70% 30%, #22d3ee22 0%, transparent 60%),
+                  radial-gradient(circle at 20% 80%, #f59e4222 0%, transparent 70%);
+      animation: bgMove 10s infinite alternate linear;
+    }
+    @keyframes bgMove {
+      0% { background-position: 70% 30%, 20% 80%; }
+      100% { background-position: 60% 40%, 30% 70%; }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 18px;
+      text-shadow: 0 4px 32px #000a, 0 1px 0 #fff1;
+      animation: fadeInDown 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+      text-align: center;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 32px;
+      animation: fadeIn 1.5s 0.5s both;
+      text-align: center;
+      max-width: 600px;
+    }
+    .scroll-down {
+      margin-top: 40px;
+      font-size: 1.1rem;
+      color: var(--accent2);
+      opacity: 0.8;
+      animation: bounce 2s infinite;
+      cursor: pointer;
+      z-index: 2;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    /* Reveal sections on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.8s cubic-bezier(.68,-0.55,.27,1.55), transform 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+      will-change: opacity, transform;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Introduction Section */
+    .intro-section {
+      max-width: 900px;
+      margin: 0 auto 0 auto;
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 48px 32px 32px 32px;
+      text-align: center;
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .intro-section h2 {
+      color: var(--accent2);
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .intro-section p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      font-weight: 500;
+      text-align: center;
+      max-width: 700px;
+    }
+    /* Products Section (Slideshow) */
+    .products-section {
+      max-width: 700px;
+      margin: 64px auto 0 auto;
+      padding: 0 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .products-section h2 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 32px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide {
+      display: none;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.7s, transform 0.7s;
+      transform: scale(0.98) translateY(30px);
+      z-index: 1;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      position: relative;
+      transform: scale(1) translateY(0);
+      z-index: 2;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide-content {
+      width: 100%;
+      max-width: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(120deg, #23272f 60%, #18181b 100%);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 24px 18px 18px 18px;
+      border: 1px solid var(--border);
+      min-height: 260px;
+      position: relative;
+      justify-content: center;
+    }
+    .product-img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      background: #0f172a;
+      box-shadow: 0 2px 16px #22d3ee22;
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: block;
+    }
+    .slide-content:hover .product-img {
+      box-shadow: 0 8px 32px #f59e4222;
+      transform: scale(1.05);
+    }
+    .product-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .product-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      text-align: center;
+      min-height: 38px;
+    }
+    .product-price {
+      color: var(--cta);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--accent2);
+      color: #18181b;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #22d3ee22;
+    }
+    .slideshow-nav {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 18px;
+      align-items: center;
+    }
+    .slideshow-arrow {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s, border 0.2s;
+    }
+    .slideshow-arrow svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--accent2);
+      transition: fill 0.2s;
+    }
+    .slideshow-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+      justify-content: center;
+    }
+    .slideshow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .slideshow-dot.active {
+      background: var(--accent2);
+    }
+    /* Reviews Section */
+    .reviews-section {
+      max-width: 900px;
+      margin: 64px auto 0 auto;
+      padding: 0 16px 32px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .reviews-section h2 {
+      color: var(--accent2);
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      justify-items: center;
+      width: 100%;
+      max-width: 900px;
+    }
+    .review-card {
+      background: var(--surface);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #0f172a22;
+      padding: 24px 18px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid var(--border);
+      min-height: 160px;
+      position: relative;
+      transition: box-shadow 0.2s, border 0.2s;
+      width: 100%;
+      max-width: 320px;
+    }
+    .review-card:hover {
+      box-shadow: 0 8px 32px #22d3ee33;
+      border-color: var(--accent2);
+    }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 2px solid var(--accent2);
+    }
+    .review-name {
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+    .review-text {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 0;
+      font-style: italic;
+      text-align: center;
+    }
+    /* Sign Up Section */
+    .signup-section {
+      max-width: 500px;
+      margin: 80px auto 0 auto;
+      background: var(--surface);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 40px 32px 32px 32px;
+      text-align: center;
+      margin-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .signup-section h2 {
+      color: var(--cta);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-align: center;
+    }
+    .signup-section p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      font-weight: 500;
+      text-align: center;
+      max-width: 400px;
+    }
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+      max-width: 320px;
+    }
+    .signup-form input[type="email"] {
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      background: #18181b;
+      color: var(--text);
+      outline: none;
+      width: 100%;
+      transition: border 0.2s;
+    }
+    body.light .signup-form input[type="email"] {
+      background: #fff;
+      color: #18181b;
+    }
+    .signup-form input[type="email"]:focus {
+      border: 1.5px solid var(--cta);
+    }
+    .signup-form button {
+      background: linear-gradient(90deg, var(--cta) 0%, var(--cta-hover) 100%);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 14px 44px;
+      border: none;
+      border-radius: 28px;
+      box-shadow: 0 4px 24px #f59e4244;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      margin-top: 8px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .signup-form button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 8px 32px #f59e4244;
+      background: linear-gradient(90deg, var(--cta-hover) 0%, var(--cta) 100%);
+    }
+    .signup-success {
+      color: var(--accent2);
+      font-weight: 700;
+      margin-top: 12px;
+      font-size: 1.1rem;
+      display: none;
+      text-align: center;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 0 18px 0;
+      background: var(--surface);
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      box-shadow: 0 -2px 12px #0f172a22;
+      margin-top: 0;
+      text-shadow: 0 1px 0 #000a;
+      width: 100%;
+    }
+    @media (max-width: 900px) {
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .slideshow-container { min-height: 420px; }
+      .slide-content { max-width: 90vw; }
+    }
+    @media (max-width: 600px) {
+      .hero-title { font-size: 2rem; }
+      .intro-section { padding: 18px 8px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .products-section h2 { text-align: center; }
+      .navbar { padding: 0 10px; }
+      .slide-content { max-width: 98vw; }
+      .product-img { width: 120px; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">MyneStore</a>
+    <div class="navbar-links">
+      <a href="#" onclick="scrollToSection('hero')">Home</a>
+      <a href="#products" onclick="scrollToSection('products')">Products</a>
+      <a href="#reviews" onclick="scrollToSection('reviews')">Reviews</a>
+      <a href="#signup" onclick="scrollToSection('signup')">Sign Up</a>
+      <div class="toggle-btn" id="toggle-theme" title="Toggle light/dark mode">
+        <svg id="theme-icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-4.97-4.03-9-9-9zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></svg>
+      </div>
+    </div>
+  </nav>
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-anim"></div>
+    <div class="hero-content">
+      <div class="hero-title">Welcome to MyneStore</div>
+      <div class="hero-subtitle">Gear up. Stand out. Shop the best in tech, style, and performance.<br>Unleash your potential with every purchase.</div>
+      <div class="scroll-down" onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth'})">
+        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg><br>Scroll Down
+      </div>
+    </div>
+  </section>
+  <section class="intro-section reveal" id="intro">
+    <h2>About MyneStore</h2>
+    <p>MyneStore is your destination for high-performance products, handpicked for men who demand more. From cutting-edge gadgets to rugged essentials, we deliver quality, speed, and style. Join a community of achievers and elevate your everyday.</p>
+  </section>
+  <section class="products-section reveal" id="products">
+    <h2>Featured Products</h2>
+    <div class="slideshow-container" id="slideshow">
+      <div class="slide active">
+        <div class="slide-content">
+          <img class="product-img" src="https://images.unsplash.com/photo-1513708927688-890a1e2b6b8a?auto=format&fit=crop&w=400&q=80" alt="Wireless Headphones">
+          <div class="product-badge">Top Pick</div>
+          <div class="product-name">Wireless Headphones</div>
+          <div class="product-desc">Engineered for immersive sound and all-day comfort. Bluetooth 5.0, 30h battery.</div>
+          <div class="product-price">$89.99</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-content">
+          <img class="product-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Smart Fitness Watch">
+          <div class="product-badge">Must Have</div>
+          <div class="product-name">Smart Fitness Watch</div>
+          <div class="product-desc">Track your goals, health, and notifications. Rugged, waterproof, 7-day battery.</div>
+          <div class="product-price">$59.99</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-content">
+          <img class="product-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Eco-Friendly Water Bottle">
+          <div class="product-badge">Eco Gear</div>
+          <div class="product-name">Eco-Friendly Water Bottle</div>
+          <div class="product-desc">Stay hydrated with this BPA-free, rugged bottle. Keeps drinks cold for 24h.</div>
+          <div class="product-price">$19.99</div>
+        </div>
+      </div>
+      <div class="slide">
+        <div class="slide-content">
+          <img class="product-img" src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Portable Speaker">
+          <div class="product-badge">Power Sound</div>
+          <div class="product-name">Portable Speaker</div>
+          <div class="product-desc">Big sound, small package. Waterproof, 12h playtime, deep bass.</div>
+          <div class="product-price">$39.99</div>
+        </div>
+      </div>
+      <div class="slideshow-nav">
+        <div class="slideshow-arrow" id="prev-slide" title="Previous">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="slideshow-arrow" id="next-slide" title="Next">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+      <div class="slideshow-dots" id="slideshow-dots"></div>
+    </div>
+  </section>
+  <section class="reviews-section reveal" id="reviews">
+    <h2>What Our Customers Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John">
+        <div class="review-name">John D.</div>
+        <div class="review-text">"Absolutely love the quality and speed. MyneStore is my go-to for new gear!"</div>
+      </div>
+      <div class="review-card">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mike">
+        <div class="review-name">Mike S.</div>
+        <div class="review-text">"The products are top-notch and the customer service is outstanding. Highly recommend!"</div>
+      </div>
+      <div class="review-card">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Alex">
+        <div class="review-name">Alex R.</div>
+        <div class="review-text">"Fast shipping and great deals. I always find what I need at MyneStore."</div>
+      </div>
+      <div class="review-card">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/77.jpg" alt="Chris">
+        <div class="review-name">Chris T.</div>
+        <div class="review-text">"Sleek website, awesome products, and the sign-up perks are real!"</div>
+      </div>
+    </div>
+  </section>
+  <section class="signup-section reveal" id="signup">
+    <h2>Unlock Exclusive Access</h2>
+    <p>Get early access to new drops, members-only deals, and the motivation you need to stay ahead. Sign up and elevate your game!</p>
+    <form class="signup-form" onsubmit="return handleSignup(event)">
+      <input type="email" id="email" placeholder="Enter your email" required autocomplete="off">
+      <button type="submit">Sign Up &rarr;</button>
+      <div class="signup-success" id="signup-success">Thank you for joining MyneStore!</div>
+    </form>
+  </section>
+  <footer>
+    Created By Mohib-Ur-Rehman
+  </footer>
+  <script>
+    // Navbar scroll to section
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({behavior: 'smooth'});
+    }
+    // Light/Dark toggle
+    const toggleBtn = document.getElementById('toggle-theme');
+    const themeIcon = document.getElementById('theme-icon');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      if(document.body.classList.contains('light')) {
+        themeIcon.innerHTML = '<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8A7.963 7.963 0 0 0 4 12c0 4.42 3.58 8 8 8s8-3.58 8-8c0-1.85-.63-3.55-1.69-4.9l1.79-1.8-1.41-1.41-1.8 1.79A7.963 7.963 0 0 0 12 4c-1.85 0-3.55.63-4.9 1.69zM12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z"/>';
+      } else {
+        themeIcon.innerHTML = '<path d="M12 3a9 9 0 1 0 9 9c0-4.97-4.03-9-9-9zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/>';
+      }
+    });
+    // Reveal sections on scroll
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      const windowHeight = window.innerHeight;
+      reveals.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < windowHeight - 80) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+    // Slideshow logic
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('slideshow-dots');
+    let currentSlide = 0;
+    function showSlide(idx) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+      });
+      Array.from(dotsContainer.children).forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+      });
+      currentSlide = idx;
+    }
+    function nextSlide() {
+      showSlide((currentSlide + 1) % slides.length);
+    }
+    function prevSlide() {
+      showSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+    // Dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = () => showSlide(i);
+      dotsContainer.appendChild(dot);
+    });
+    document.getElementById('next-slide').onclick = nextSlide;
+    document.getElementById('prev-slide').onclick = prevSlide;
+    // Auto-slide
+    setInterval(nextSlide, 6000);
+    // Sign up form handler
+    function handleSignup(e) {
+      e.preventDefault();
+      document.getElementById('signup-success').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('signup-success').style.display = 'none';
+        document.getElementById('email').value = '';
+      }, 2500);
+      return false;
+    }
+  </script>
+</body>
+</html> 
