@@ -638,7 +638,7 @@
     <div class="slideshow-container" id="slideshow">
       <div class="slide active">
         <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1513708927688-890a1e2b6b8a?auto=format&fit=crop&w=400&q=80" alt="Wireless Headphones">
+          <img class="product-img" src="https://images.unsplash.com/photo-1513708927688-890a1e2b6b8a?auto=format&fit=crop&w=400&q=80" alt="Wireless Headphones" loading="lazy">
           <div class="product-badge">Top Pick</div>
           <div class="product-name">Wireless Headphones</div>
           <div class="product-desc">Engineered for immersive sound and all-day comfort. Bluetooth 5.0, 30h battery.</div>
@@ -647,7 +647,7 @@
       </div>
       <div class="slide">
         <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Smart Fitness Watch">
+          <img class="product-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Smart Fitness Watch" loading="lazy">
           <div class="product-badge">Must Have</div>
           <div class="product-name">Smart Fitness Watch</div>
           <div class="product-desc">Track your goals, health, and notifications. Rugged, waterproof, 7-day battery.</div>
@@ -656,7 +656,7 @@
       </div>
       <div class="slide">
         <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Eco-Friendly Water Bottle">
+          <img class="product-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Eco-Friendly Water Bottle" loading="lazy">
           <div class="product-badge">Eco Gear</div>
           <div class="product-name">Eco-Friendly Water Bottle</div>
           <div class="product-desc">Stay hydrated with this BPA-free, rugged bottle. Keeps drinks cold for 24h.</div>
@@ -665,7 +665,7 @@
       </div>
       <div class="slide">
         <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Portable Speaker">
+          <img class="product-img" src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Portable Speaker" loading="lazy">
           <div class="product-badge">Power Sound</div>
           <div class="product-name">Portable Speaker</div>
           <div class="product-desc">Big sound, small package. Waterproof, 12h playtime, deep bass.</div>
@@ -687,22 +687,22 @@
     <h2>What Our Customers Say</h2>
     <div class="reviews-grid">
       <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John" loading="lazy">
         <div class="review-name">John D.</div>
         <div class="review-text">"Absolutely love the quality and speed. MyneStore is my go-to for new gear!"</div>
       </div>
       <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mike">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mike" loading="lazy">
         <div class="review-name">Mike S.</div>
         <div class="review-text">"The products are top-notch and the customer service is outstanding. Highly recommend!"</div>
       </div>
       <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Alex">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Alex" loading="lazy">
         <div class="review-name">Alex R.</div>
         <div class="review-text">"Fast shipping and great deals. I always find what I need at MyneStore."</div>
       </div>
       <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/77.jpg" alt="Chris">
+        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/77.jpg" alt="Chris" loading="lazy">
         <div class="review-name">Chris T.</div>
         <div class="review-text">"Sleek website, awesome products, and the sign-up perks are real!"</div>
       </div>
@@ -745,6 +745,13 @@
         const sectionTop = section.getBoundingClientRect().top;
         if (sectionTop < windowHeight - 80) {
           section.classList.add('visible');
+          // Stagger review cards
+          if (section.classList.contains('reviews-section')) {
+            const cards = section.querySelectorAll('.review-card');
+            cards.forEach((card, i) => {
+              setTimeout(() => card.classList.add('visible'), 120 * i);
+            });
+          }
         }
       });
     }
@@ -790,6 +797,16 @@
       }, 2500);
       return false;
     }
+    // Product image loading animation
+document.querySelectorAll('.product-img').forEach(img => {
+  img.classList.remove('loaded');
+  img.loading = "lazy";
+  img.addEventListener('load', () => {
+    img.classList.add('loaded');
+  });
+  // fallback for cached images
+  if (img.complete) img.classList.add('loaded');
+});
   </script>
 </body>
 </html>
