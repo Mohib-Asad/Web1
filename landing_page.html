@@ -3,810 +3,1113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyneStore - Welcome</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>GEARX | Premium Gear for Men</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Modern Color Scheme */
     :root {
-      --primary: #0f172a;
-      --primary-dark: #020617;
-      --accent: #f59e42;
-      --accent2: #22d3ee;
-      --bg: #18181b;
-      --surface: #23272f;
-      --text: #f1f5f9;
-      --muted: #64748b;
-      --cta: #f59e42;
-      --cta-hover: #ea580c;
-      --border: #334155;
-      --shadow: 0 4px 32px #0f172a44;
+      --dark: #0d1117;
+      --darker: #090c10;
+      --accent: #ff5e1a;
+      --accent-dark: #e04a00;
+      --accent-light: #ff7e43;
+      --light: #f0f2f5;
+      --gray: #7d8b99;
+      --surface: #1a1f28;
+      --surface-light: #232a35;
+      --success: #00c896;
+      --border: #2d3748;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
-    body.light {
-      --primary: #f1f5f9;
-      --primary-dark: #e2e8f0;
-      --accent: #f59e42;
-      --accent2: #2563eb;
-      --bg: #f4f6fa;
-      --surface: #fff;
-      --text: #18181b;
-      --muted: #64748b;
-      --cta: #f59e42;
-      --cta-hover: #ea580c;
-      --border: #e5e7eb;
-      --shadow: 0 4px 32px #2563eb22;
-    }
-    html, body {
+
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      scroll-behavior: smooth;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
     body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      transition: background 0.4s, color 0.4s;
+      background-color: var(--dark);
+      color: var(--light);
+      overflow-x: hidden;
+      position: relative;
     }
-    /* Navbar */
-    .navbar {
-      width: 100%;
-      background: var(--surface);
-      box-shadow: 0 2px 12px #0f172a22;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 32px;
+
+    body::before {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 100;
-      height: 64px;
-      transition: background 0.4s, color 0.4s;
-    }
-    .navbar-logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .navbar-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    .navbar-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: color 0.2s;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .navbar-links a:after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 2px;
-      background: var(--accent2);
-      transition: width 0.2s;
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-    }
-    .navbar-links a:hover:after {
       width: 100%;
-    }
-    .toggle-btn {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border 0.2s;
-      margin-left: 18px;
-    }
-    .toggle-btn svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--accent2);
-      transition: fill 0.2s;
-    }
-    /* Hero Section */
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(120deg, #0f172a 60%, #23272f 100%);
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      padding-top: 64px;
-      background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      z-index: 1;
-    }
-    .hero-bg-anim {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 0;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(255, 94, 26, 0.08) 0%, transparent 40%), 
+                  radial-gradient(circle at 80% 70%, rgba(0, 200, 150, 0.05) 0%, transparent 40%);
+      z-index: -1;
       pointer-events: none;
-      background: radial-gradient(circle at 70% 30%, #22d3ee22 0%, transparent 60%),
-                  radial-gradient(circle at 20% 80%, #f59e4222 0%, transparent 70%);
-      animation: bgMove 10s infinite alternate linear;
     }
-    @keyframes bgMove {
-      0% { background-position: 70% 30%, 20% 80%; }
-      100% { background-position: 60% 40%, 30% 70%; }
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 0 24px;
+
+    /* Navigation */
+    nav {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-    }
-    .hero-title {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: var(--accent);
-      margin-bottom: 18px;
-      text-shadow: 0 4px 32px #000a, 0 1px 0 #fff1;
-      animation: fadeInDown 1.2s cubic-bezier(.68,-0.55,.27,1.55);
-      text-align: center;
-    }
-    .hero-subtitle {
-      font-size: 1.3rem;
-      color: var(--text);
-      font-weight: 500;
-      margin-bottom: 32px;
-      animation: fadeIn 1.5s 0.5s both;
-      text-align: center;
-      max-width: 600px;
-    }
-    .scroll-down {
-      margin-top: 40px;
-      font-size: 1.1rem;
-      color: var(--accent2);
-      opacity: 0.8;
-      animation: bounce 2s infinite;
-      cursor: pointer;
-      z-index: 2;
-      position: relative;
-      display: inline-block;
-      text-align: center;
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(10px); }
-    }
-    /* Reveal sections on scroll */
-    /* Advanced Reveal Animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(60px) scale(0.98) rotateX(8deg);
-  filter: blur(6px);
-  transition:
-    opacity 0.9s cubic-bezier(.68,-0.55,.27,1.55),
-    transform 0.9s cubic-bezier(.68,-0.55,.27,1.55),
-    filter 0.7s cubic-bezier(.68,-0.55,.27,1.55);
-  will-change: opacity, transform, filter;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1) rotateX(0);
-  filter: blur(0);
-}
-    /* Introduction Section */
-    .intro-section {
-      max-width: 900px;
-      margin: 0 auto 0 auto;
-      background: var(--surface);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 48px 32px 32px 32px;
-      text-align: center;
-      margin-top: 64px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .intro-section h2 {
-      color: var(--accent2);
-      font-size: 1.7rem;
-      margin-bottom: 12px;
-      font-weight: 700;
-      text-align: center;
-    }
-    .intro-section p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      margin-bottom: 0;
-      font-weight: 500;
-      text-align: center;
-      max-width: 700px;
-    }
-    /* Products Section (Slideshow) */
-    .products-section {
-      max-width: 700px;
-      margin: 64px auto 0 auto;
-      padding: 0 16px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .products-section h2 {
-      color: var(--accent);
-      font-size: 1.5rem;
-      margin-bottom: 32px;
-      text-align: center;
-      font-weight: 700;
-    }
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .slide {
-      display: none;
-      position: absolute;
-      width: 100%;
+      padding: 1.5rem 5%;
+      position: fixed;
       top: 0;
       left: 0;
-      opacity: 0;
-      transition: opacity 0.7s, transform 0.7s;
-      transform: scale(0.98) translateY(30px);
-      z-index: 1;
-      align-items: center;
-      justify-content: center;
-    }
-    .slide.active {
-      display: flex;
-      opacity: 1;
-      position: relative;
-      transform: scale(1) translateY(0);
-      z-index: 2;
-      align-items: center;
-      justify-content: center;
-    }
-    .slide-content {
       width: 100%;
-      max-width: 420px;
+      z-index: 1000;
+      background: rgba(13, 17, 23, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: var(--transition);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 94, 26, 0.3);
+    }
+
+    .cart-icon {
+      position: relative;
+      font-size: 1.4rem;
+      color: var(--light);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cart-icon:hover {
+      color: var(--accent);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.7rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      position: relative;
+      overflow: hidden;
+      padding-top: 6rem;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      position: relative;
+    }
+
+    .hero h1 span::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: var(--accent);
+      opacity: 0.3;
+      border-radius: 4px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .primary-btn {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 25px rgba(255, 94, 26, 0.3);
+    }
+
+    .primary-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(255, 94, 26, 0.4);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: var(--light);
+      border: 2px solid var(--border);
+    }
+
+    .secondary-btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .hero-image {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45%;
+      max-width: 700px;
+      z-index: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(-53%) translateX(10px); }
+      100% { transform: translateY(-50%) translateX(0); }
+    }
+
+    /* Categories */
+    .categories {
+      padding: 5rem 5%;
+      background: var(--darker);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative;
+      height: 350px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      background: linear-gradient(120deg, #23272f 60%, #18181b 100%);
-      border-radius: 16px;
+      justify-content: flex-end;
       box-shadow: var(--shadow);
-      padding: 24px 18px 18px 18px;
-      border: 1px solid var(--border);
-      min-height: 260px;
+    }
+
+    .category-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .category-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .category-card:hover .category-img {
+      transform: scale(1.05);
+    }
+
+    .category-content {
       position: relative;
-      justify-content: center;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(13, 17, 23, 0.9), transparent);
+      z-index: 2;
     }
-    /* Product image advanced animation */
-.product-img {
-  opacity: 0;
-  transform: scale(0.92) rotateZ(-6deg);
-  filter: blur(8px) grayscale(0.3);
-  transition:
-    opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55),
-    transform 0.7s cubic-bezier(.68,-0.55,.27,1.55),
-    filter 0.6s cubic-bezier(.68,-0.55,.27,1.55);
-}
-.product-img.loaded {
-  opacity: 1;
-  transform: scale(1) rotateZ(0);
-  filter: blur(0) grayscale(0);
-}
-    .product-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--accent2);
-      margin-bottom: 6px;
-      text-align: center;
+
+    .category-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
     }
-    .product-desc {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 12px;
-      text-align: center;
-      min-height: 38px;
+
+    .category-btn {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
     }
-    .product-price {
-      color: var(--cta);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      text-align: center;
+
+    .category-btn:hover {
+      gap: 1rem;
+      color: var(--accent-light);
     }
+
+    /* Featured Products */
+    .featured {
+      padding: 5rem 5%;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-img-container {
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.1);
+    }
+
     .product-badge {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      background: var(--accent2);
-      color: #18181b;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 4px 14px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px #22d3ee22;
+      top: 15px;
+      left: 15px;
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      z-index: 2;
     }
-    .slideshow-nav {
+
+    .product-actions {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
       display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin-top: 18px;
-      align-items: center;
+      gap: 0.8rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: var(--transition);
     }
-    .slideshow-arrow {
-      background: var(--surface);
-      border: 1.5px solid var(--border);
+
+    .product-card:hover .product-actions {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .action-btn {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: background 0.2s, border 0.2s;
-    }
-    .slideshow-arrow svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--accent2);
-      transition: fill 0.2s;
-    }
-    .slideshow-dots {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      margin-top: 8px;
-      justify-content: center;
-    }
-    .slideshow-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--border);
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .slideshow-dot.active {
-      background: var(--accent2);
-    }
-    /* Reviews Section */
-    .reviews-section {
-      max-width: 900px;
-      margin: 64px auto 0 auto;
-      padding: 0 16px 32px 16px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .reviews-section h2 {
-      color: var(--accent2);
-      font-size: 1.4rem;
-      margin-bottom: 24px;
-      font-weight: 700;
-      text-align: center;
-    }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 32px;
-      justify-items: center;
-      width: 100%;
-      max-width: 900px;
-    }
-    .review-card {
-      background: var(--surface);
-      border-radius: 14px;
-      box-shadow: 0 2px 12px #0f172a22;
-      padding: 24px 18px 18px 18px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border: 1px solid var(--border);
-      min-height: 160px;
-      position: relative;
-      transition: box-shadow 0.2s, border 0.2s;
-      width: 100%;
-      max-width: 320px;
-    }
-    .review-card:hover {
-      box-shadow: 0 8px 32px #22d3ee33;
-      border-color: var(--accent2);
-    }
-    .review-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 2px solid var(--accent2);
-    }
-    .review-name {
-      font-weight: 700;
-      color: var(--accent2);
-      margin-bottom: 4px;
-      font-size: 1.05rem;
-      text-align: center;
-    }
-    .review-text {
-      color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 0;
-      font-style: italic;
-      text-align: center;
-    }
-    /* Staggered animation for review cards */
-.reviews-grid .review-card {
-  opacity: 0;
-  transform: translateY(40px) scale(0.96);
-  filter: blur(4px);
-  transition:
-    opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55),
-    transform 0.7s cubic-bezier(.68,-0.55,.27,1.55),
-    filter 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-}
-.reviews-grid .review-card.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
-    /* Sign Up Section */
-    .signup-section {
-      max-width: 500px;
-      margin: 80px auto 0 auto;
-      background: var(--surface);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding: 40px 32px 32px 32px;
-      text-align: center;
-      margin-bottom: 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .signup-section h2 {
-      color: var(--cta);
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-      text-align: center;
-    }
-    .signup-section p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 18px;
-      font-weight: 500;
-      text-align: center;
-      max-width: 400px;
-    }
-    .signup-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      width: 100%;
-      max-width: 320px;
-    }
-    .signup-form input[type="email"] {
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      font-size: 1rem;
-      background: #18181b;
-      color: var(--text);
-      outline: none;
-      width: 100%;
-      transition: border 0.2s;
-    }
-    body.light .signup-form input[type="email"] {
-      background: #fff;
-      color: #18181b;
-    }
-    .signup-form input[type="email"]:focus {
-      border: 1.5px solid var(--cta);
-    }
-    .signup-form button {
-      background: linear-gradient(90deg, var(--cta) 0%, var(--cta-hover) 100%);
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-      padding: 14px 44px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
       border: none;
-      border-radius: 28px;
-      box-shadow: 0 4px 24px #f59e4244;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-      margin-top: 8px;
-      width: 100%;
-      max-width: 320px;
+      transition: var(--transition);
     }
-    .signup-form button:hover {
-      transform: scale(1.06);
-      box-shadow: 0 8px 32px #f59e4244;
-      background: linear-gradient(90deg, var(--cta-hover) 0%, var(--cta) 100%);
+
+    .action-btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
     }
-    .signup-success {
-      color: var(--accent2);
+
+    .product-info {
+      padding: 1.5rem;
+    }
+
+    .product-category {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .product-name {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-desc {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-size: 1.5rem;
       font-weight: 700;
-      margin-top: 12px;
-      font-size: 1.1rem;
-      display: none;
-      text-align: center;
     }
+
+    .old-price {
+      text-decoration: line-through;
+      color: var(--gray);
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+
+    .add-to-cart {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .add-to-cart:hover {
+      background: var(--accent-dark);
+    }
+
+    /* Stats Section */
+    .stats {
+      padding: 5rem 5%;
+      background: var(--darker);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem;
+      background: var(--surface);
+      border-radius: 16px;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-10px);
+      background: var(--surface-light);
+    }
+
+    .stat-icon {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, var(--accent), var(--success));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-title {
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 6rem 5%;
+      text-align: center;
+      background: linear-gradient(rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.9)), url('https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 94, 26, 0.1);
+    }
+
+    .cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta p {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .email-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 1rem;
+    }
+
+    .email-input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      border: 2px solid var(--border);
+      background: transparent;
+      color: var(--light);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .email-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(255, 94, 26, 0.2);
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background: var(--accent-dark);
+      transform: scale(1.05);
+    }
+
     /* Footer */
     footer {
-      text-align: center;
-      padding: 24px 0 18px 0;
+      background: var(--darker);
+      padding: 4rem 5% 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+      gap: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
       background: var(--surface);
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: var(--accent2);
-      letter-spacing: 1px;
-      box-shadow: 0 -2px 12px #0f172a22;
-      margin-top: 0;
-      text-shadow: 0 1px 0 #000a;
-      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 1.2rem;
+      transition: var(--transition);
     }
-    @media (max-width: 900px) {
-      .reviews-grid { grid-template-columns: 1fr 1fr; }
-      .slideshow-container { min-height: 420px; }
-      .slide-content { max-width: 90vw; }
+
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-5px);
     }
-    @media (max-width: 600px) {
-      .hero-title { font-size: 2rem; }
-      .intro-section { padding: 18px 8px; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      .products-section h2 { text-align: center; }
-      .navbar { padding: 0 10px; }
-      .slide-content { max-width: 98vw; }
-      .product-img { width: 120px; height: 120px; }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--gray);
+      font-size: 0.9rem;
     }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 8rem;
+      }
+      
+      .hero-content {
+        margin-bottom: 3rem;
+      }
+      
+      .hero-btns {
+        justify-content: center;
+      }
+      
+      .hero-image {
+        position: relative;
+        width: 80%;
+        right: auto;
+        top: auto;
+        transform: none;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .email-form {
+        flex-direction: column;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="#" class="navbar-logo">MyneStore</a>
-    <div class="navbar-links">
-      <a href="#" onclick="scrollToSection('hero')">Home</a>
-      <a href="#products" onclick="scrollToSection('products')">Products</a>
-      <a href="#reviews" onclick="scrollToSection('reviews')">Reviews</a>
-      <a href="#signup" onclick="scrollToSection('signup')">Sign Up</a>
-      <div class="toggle-btn" id="toggle-theme" title="Toggle light/dark mode">
-        <svg id="theme-icon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-4.97-4.03-9-9-9zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></svg>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo animate">GEARX<span>.</span></a>
+    <div class="nav-links animate">
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">Collections</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="nav-actions animate">
+      <button class="nav-btn"><i class="fas fa-user"></i> Sign In</button>
+      <div class="cart-icon">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count">3</span>
       </div>
     </div>
   </nav>
-  <section class="hero-section" id="hero">
-    <div class="hero-bg-anim"></div>
-    <div class="hero-content">
-      <div class="hero-title">Welcome to MyneStore</div>
-      <div class="hero-subtitle">Gear up. Stand out. Shop the best in tech, style, and performance.<br>Unleash your potential with every purchase.</div>
-      <div class="scroll-down" onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth'})">
-        <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg><br>Scroll Down
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content animate">
+      <h1>Elevate Your <span>Essentials</span></h1>
+      <p>Premium gear for the modern man. Designed with purpose, built for performance. Discover tools that enhance your daily life without compromise.</p>
+      <div class="hero-btns">
+        <button class="btn primary-btn">Shop Collection <i class="fas fa-arrow-right"></i></button>
+        <button class="btn secondary-btn">Explore <i class="fas fa-compass"></i></button>
+      </div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?auto=format&fit=crop&w=800&q=80" alt="Premium Gear" class="hero-image animate delay-1">
+  </section>
+
+  <!-- Categories -->
+  <section class="categories">
+    <h2 class="section-title animate">Shop Categories</h2>
+    <div class="category-grid">
+      <div class="category-card animate">
+        <img src="https://images.unsplash.com/photo-1611930022073-1a0d4a9e1a1f?auto=format&fit=crop&w=800&q=80" alt="Gadgets" class="category-img">
+        <div class="category-content">
+          <h3 class="category-title">Tech & Gadgets</h3>
+          <a href="#" class="category-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="category-card animate delay-1">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80" alt="Apparel" class="category-img">
+        <div class="category-content">
+          <h3 class="category-title">Apparel</h3>
+          <a href="#" class="category-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="category-card animate delay-2">
+        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80" alt="Grooming" class="category-img">
+        <div class="category-content">
+          <h3 class="category-title">Grooming</h3>
+          <a href="#" class="category-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="category-card animate delay-3">
+        <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80" alt="Accessories" class="category-img">
+        <div class="category-content">
+          <h3 class="category-title">Accessories</h3>
+          <a href="#" class="category-btn">Shop Now <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </section>
-  <section class="intro-section reveal" id="intro">
-    <h2>About MyneStore</h2>
-    <p>MyneStore is your destination for high-performance products, handpicked for men who demand more. From cutting-edge gadgets to rugged essentials, we deliver quality, speed, and style. Join a community of achievers and elevate your everyday.</p>
-  </section>
-  <section class="products-section reveal" id="products">
-    <h2>Featured Products</h2>
-    <div class="slideshow-container" id="slideshow">
-      <div class="slide active">
-        <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1513708927688-890a1e2b6b8a?auto=format&fit=crop&w=400&q=80" alt="Wireless Headphones" loading="lazy">
-          <div class="product-badge">Top Pick</div>
-          <div class="product-name">Wireless Headphones</div>
-          <div class="product-desc">Engineered for immersive sound and all-day comfort. Bluetooth 5.0, 30h battery.</div>
-          <div class="product-price">$89.99</div>
+
+  <!-- Featured Products -->
+  <section class="featured">
+    <h2 class="section-title animate">Featured Products</h2>
+    <div class="product-grid">
+      <div class="product-card animate">
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80" alt="Smart Watch" class="product-img">
+          <span class="product-badge">Best Seller</span>
+          <div class="product-actions">
+            <button class="action-btn"><i class="fas fa-heart"></i></button>
+            <button class="action-btn"><i class="fas fa-eye"></i></button>
+            <button class="action-btn"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Tech & Gadgets</span>
+          <h3 class="product-name">Pro Series Smart Watch</h3>
+          <p class="product-desc">Advanced fitness tracking with premium materials and military-grade durability.</p>
+          <div class="product-price">
+            <div>
+              <span class="price">$249.99</span>
+              <span class="old-price">$299.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-plus"></i> Add</button>
+          </div>
         </div>
       </div>
-      <div class="slide">
-        <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Smart Fitness Watch" loading="lazy">
-          <div class="product-badge">Must Have</div>
-          <div class="product-name">Smart Fitness Watch</div>
-          <div class="product-desc">Track your goals, health, and notifications. Rugged, waterproof, 7-day battery.</div>
-          <div class="product-price">$59.99</div>
+      
+      <div class="product-card animate delay-1">
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?auto=format&fit=crop&w=800&q=80" alt="Wireless Headphones" class="product-img">
+          <span class="product-badge">New</span>
+          <div class="product-actions">
+            <button class="action-btn"><i class="fas fa-heart"></i></button>
+            <button class="action-btn"><i class="fas fa-eye"></i></button>
+            <button class="action-btn"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Audio</span>
+          <h3 class="product-name">Premium Wireless Headphones</h3>
+          <p class="product-desc">Studio-quality sound with adaptive noise cancellation and 40h battery life.</p>
+          <div class="product-price">
+            <div>
+              <span class="price">$199.99</span>
+              <span class="old-price">$249.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-plus"></i> Add</button>
+          </div>
         </div>
       </div>
-      <div class="slide">
-        <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Eco-Friendly Water Bottle" loading="lazy">
-          <div class="product-badge">Eco Gear</div>
-          <div class="product-name">Eco-Friendly Water Bottle</div>
-          <div class="product-desc">Stay hydrated with this BPA-free, rugged bottle. Keeps drinks cold for 24h.</div>
-          <div class="product-price">$19.99</div>
+      
+      <div class="product-card animate delay-2">
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1612195583952-4dde9b3a8af0?auto=format&fit=crop&w=800&q=80" alt="Leather Wallet" class="product-img">
+          <span class="product-badge">Top Pick</span>
+          <div class="product-actions">
+            <button class="action-btn"><i class="fas fa-heart"></i></button>
+            <button class="action-btn"><i class="fas fa-eye"></i></button>
+            <button class="action-btn"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Accessories</span>
+          <h3 class="product-name">Minimalist Leather Wallet</h3>
+          <p class="product-desc">Handcrafted full-grain leather with RFID protection and slim profile design.</p>
+          <div class="product-price">
+            <div>
+              <span class="price">$79.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-plus"></i> Add</button>
+          </div>
         </div>
       </div>
-      <div class="slide">
-        <div class="slide-content">
-          <img class="product-img" src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=400&q=80" alt="Portable Speaker" loading="lazy">
-          <div class="product-badge">Power Sound</div>
-          <div class="product-name">Portable Speaker</div>
-          <div class="product-desc">Big sound, small package. Waterproof, 12h playtime, deep bass.</div>
-          <div class="product-price">$39.99</div>
+      
+      <div class="product-card animate delay-3">
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Smart Watch" class="product-img">
+          <span class="product-badge">Limited</span>
+          <div class="product-actions">
+            <button class="action-btn"><i class="fas fa-heart"></i></button>
+            <button class="action-btn"><i class="fas fa-eye"></i></button>
+            <button class="action-btn"><i class="fas fa-shopping-cart"></i></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Tech & Gadgets</span>
+          <h3 class="product-name">Titanium Smart Pen</h3>
+          <p class="product-desc">Digital writing experience with precision engineering and seamless device integration.</p>
+          <div class="product-price">
+            <div>
+              <span class="price">$129.99</span>
+              <span class="old-price">$149.99</span>
+            </div>
+            <button class="add-to-cart"><i class="fas fa-plus"></i> Add</button>
+          </div>
         </div>
       </div>
-      <div class="slideshow-nav">
-        <div class="slideshow-arrow" id="prev-slide" title="Previous">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </div>
-        <div class="slideshow-arrow" id="next-slide" title="Next">
-          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
-        </div>
-      </div>
-      <div class="slideshow-dots" id="slideshow-dots"></div>
     </div>
   </section>
-  <section class="reviews-section reveal" id="reviews">
-    <h2>What Our Customers Say</h2>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="John" loading="lazy">
-        <div class="review-name">John D.</div>
-        <div class="review-text">"Absolutely love the quality and speed. MyneStore is my go-to for new gear!"</div>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-card animate">
+        <div class="stat-icon"><i class="fas fa-truck"></i></div>
+        <div class="stat-number">24h</div>
+        <div class="stat-title">Fast Delivery</div>
       </div>
-      <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Mike" loading="lazy">
-        <div class="review-name">Mike S.</div>
-        <div class="review-text">"The products are top-notch and the customer service is outstanding. Highly recommend!"</div>
+      
+      <div class="stat-card animate delay-1">
+        <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="stat-number">5-Yr</div>
+        <div class="stat-title">Warranty</div>
       </div>
-      <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Alex" loading="lazy">
-        <div class="review-name">Alex R.</div>
-        <div class="review-text">"Fast shipping and great deals. I always find what I need at MyneStore."</div>
+      
+      <div class="stat-card animate delay-2">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-number">250k+</div>
+        <div class="stat-title">Satisfied Clients</div>
       </div>
-      <div class="review-card">
-        <img class="review-avatar" src="https://randomuser.me/api/portraits/men/77.jpg" alt="Chris" loading="lazy">
-        <div class="review-name">Chris T.</div>
-        <div class="review-text">"Sleek website, awesome products, and the sign-up perks are real!"</div>
+      
+      <div class="stat-card animate delay-3">
+        <div class="stat-icon"><i class="fas fa-gift"></i></div>
+        <div class="stat-number">100%</div>
+        <div class="stat-title">Satisfaction</div>
       </div>
     </div>
   </section>
-  <section class="signup-section reveal" id="signup">
-    <h2>Unlock Exclusive Access</h2>
-    <p>Get early access to new drops, members-only deals, and the motivation you need to stay ahead. Sign up and elevate your game!</p>
-    <form class="signup-form" onsubmit="return handleSignup(event)">
-      <input type="email" id="email" placeholder="Enter your email" required autocomplete="off">
-      <button type="submit">Sign Up &rarr;</button>
-      <div class="signup-success" id="signup-success">Thank you for joining MyneStore!</div>
-    </form>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content animate">
+      <h2>Join The Community</h2>
+      <p>Subscribe to our newsletter and get exclusive access to new product launches, special offers, and style tips curated for the modern man.</p>
+      <form class="email-form">
+        <input type="email" class="email-input" placeholder="Your email address">
+        <button type="submit" class="submit-btn">Subscribe <i class="fas fa-paper-plane"></i></button>
+      </form>
+    </div>
   </section>
+
+  <!-- Footer -->
   <footer>
-    Created By Mohib-Ur-Rehman
+    <div class="footer-grid">
+      <div class="footer-col animate">
+        <h3>MASCULINE<span>.</span></h3>
+        <p style="color: var(--gray); margin-bottom: 1.5rem; line-height: 1.7;">Premium essentials for the modern man. Designed with purpose, built for performance.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col animate delay-1">
+        <h3>Shop</h3>
+        <ul class="footer-links">
+          <li><a href="#">New Arrivals <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Best Sellers <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Tech & Gadgets <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Apparel <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Accessories <i class="fas fa-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col animate delay-2">
+        <h3>Support</h3>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">FAQs <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Shipping Policy <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Returns & Exchanges <i class="fas fa-chevron-right"></i></a></li>
+          <li><a href="#">Warranty <i class="fas fa-chevron-right"></i></a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-col animate delay-3">
+        <h3>Contact</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Design Street, New York</a></li>
+          <li><a href="#"><i class="fas fa-phone-alt"></i> +1 (555) 123-4567</a></li>
+          <li><a href="#"><i class="fas fa-envelope"></i> support@masculine.com</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM EST</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      &copy; 2023 MASCULINE. All rights reserved. Designed with <i class="fas fa-heart" style="color: var(--accent);"></i> by Mohib-Ur-Rehman
+    </div>
   </footer>
+
   <script>
-    // Navbar scroll to section
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({behavior: 'smooth'});
-    }
-    // Light/Dark toggle
-    const toggleBtn = document.getElementById('toggle-theme');
-    const themeIcon = document.getElementById('theme-icon');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-      if(document.body.classList.contains('light')) {
-        themeIcon.innerHTML = '<path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8A7.963 7.963 0 0 0 4 12c0 4.42 3.58 8 8 8s8-3.58 8-8c0-1.85-.63-3.55-1.69-4.9l1.79-1.8-1.41-1.41-1.8 1.79A7.963 7.963 0 0 0 12 4c-1.85 0-3.55.63-4.9 1.69zM12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z"/>';
-      } else {
-        themeIcon.innerHTML = '<path d="M12 3a9 9 0 1 0 9 9c0-4.97-4.03-9-9-9zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/>';
-      }
-    });
-    // Reveal sections on scroll
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.reveal');
-      const windowHeight = window.innerHeight;
-      reveals.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < windowHeight - 80) {
-          section.classList.add('visible');
-          // Stagger review cards
-          if (section.classList.contains('reviews-section')) {
-            const cards = section.querySelectorAll('.review-card');
-            cards.forEach((card, i) => {
-              setTimeout(() => card.classList.add('visible'), 120 * i);
-            });
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animatedElements = document.querySelectorAll('.animate');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
           }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      animatedElements.forEach(element => {
+        element.style.opacity = 0;
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(element);
+      });
+      
+      // Cart interaction
+      const cartButtons = document.querySelectorAll('.add-to-cart, .action-btn:last-child');
+      const cartCount = document.querySelector('.cart-count');
+      let count = 3;
+      
+      cartButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          count++;
+          cartCount.textContent = count;
+          
+          // Add animation effect
+          cartCount.style.transform = 'scale(1.5)';
+          setTimeout(() => {
+            cartCount.style.transform = 'scale(1)';
+          }, 300);
+        });
+      });
+      
+      // Form submission
+      const emailForm = document.querySelector('.email-form');
+      emailForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('.email-input');
+        if (emailInput.value) {
+          alert(`Thank you for subscribing with: ${emailInput.value}`);
+          emailInput.value = '';
         }
       });
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('DOMContentLoaded', revealOnScroll);
-    // Slideshow logic
-    const slides = document.querySelectorAll('.slide');
-    const dotsContainer = document.getElementById('slideshow-dots');
-    let currentSlide = 0;
-    function showSlide(idx) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === idx);
-      });
-      Array.from(dotsContainer.children).forEach((dot, i) => {
-        dot.classList.toggle('active', i === idx);
-      });
-      currentSlide = idx;
-    }
-    function nextSlide() {
-      showSlide((currentSlide + 1) % slides.length);
-    }
-    function prevSlide() {
-      showSlide((currentSlide - 1 + slides.length) % slides.length);
-    }
-    // Dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
-      dot.onclick = () => showSlide(i);
-      dotsContainer.appendChild(dot);
     });
-    document.getElementById('next-slide').onclick = nextSlide;
-    document.getElementById('prev-slide').onclick = prevSlide;
-    // Auto-slide
-    setInterval(nextSlide, 6000);
-    // Sign up form handler
-    function handleSignup(e) {
-      e.preventDefault();
-      document.getElementById('signup-success').style.display = 'block';
-      setTimeout(() => {
-        document.getElementById('signup-success').style.display = 'none';
-        document.getElementById('email').value = '';
-      }, 2500);
-      return false;
-    }
-    // Product image loading animation
-document.querySelectorAll('.product-img').forEach(img => {
-  img.classList.remove('loaded');
-  img.loading = "lazy";
-  img.addEventListener('load', () => {
-    img.classList.add('loaded');
-  });
-  // fallback for cached images
-  if (img.complete) img.classList.add('loaded');
-});
   </script>
 </body>
 </html>
