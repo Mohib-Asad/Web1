@@ -798,6 +798,261 @@
                 right: 15px;
             }
         }
+
+        /* Summer Banner */
+        .summer-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #ffe259 0%, #ffa751 100%);
+            color: #d35400;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 18px 0 12px 0;
+            box-shadow: 0 2px 10px rgba(255, 168, 51, 0.08);
+            position: relative;
+            z-index: 999;
+            gap: 18px;
+        }
+        .summer-banner .summer-icon {
+            font-size: 28px;
+            margin: 0 8px;
+        }
+        .summer-banner-btn {
+            background: #ff7675;
+            color: #fff;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin-left: 10px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(255, 118, 117, 0.15);
+            transition: background 0.2s;
+        }
+        .summer-banner-btn:hover {
+            background: #fd5e53;
+        }
+
+        /* Summer Ad Block */
+        .summer-ad {
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            color: #fff;
+            padding: 40px 0;
+            margin: 40px 0 0 0;
+        }
+        .summer-ad-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .summer-ad-text h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .summer-ad-text p {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+        .summer-ad-btn {
+            background: #ffe259;
+            color: #d35400;
+            border-radius: 20px;
+            padding: 10px 28px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(255, 226, 89, 0.15);
+            transition: background 0.2s;
+        }
+        .summer-ad-btn:hover {
+            background: #ffd200;
+        }
+        .summer-ad-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border: 6px solid #fff;
+        }
+        @media (max-width: 768px) {
+            .summer-ad-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .summer-ad-img {
+                margin: 0 auto;
+            }
+        }
+
+        /* Summer Slideshow */
+        .summer-slideshow {
+            background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+            padding: 50px 0 30px 0;
+            margin-bottom: 0;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(255, 168, 51, 0.13);
+            background: #fffbe6;
+        }
+        .slide {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            position: absolute;
+            width: 100%;
+            height: 320px;
+            left: 0;
+            top: 0;
+            transition: opacity 0.5s;
+        }
+        .slide.active {
+            display: flex;
+            position: relative;
+            opacity: 1;
+            z-index: 2;
+        }
+        .slide img {
+            width: 320px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 0 30px;
+            box-shadow: 0 2px 12px rgba(255, 168, 51, 0.10);
+        }
+        .slide-caption {
+            flex: 1;
+            min-width: 200px;
+        }
+        .slide-caption h3 {
+            font-size: 28px;
+            color: #d35400;
+            margin-bottom: 10px;
+        }
+        .slide-caption p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 18px;
+        }
+        .slide-btn {
+            background: #ff7675;
+            color: #fff;
+            border-radius: 20px;
+            padding: 8px 22px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: 0 2px 8px rgba(255, 118, 117, 0.15);
+            transition: background 0.2s;
+        }
+        .slide-btn:hover {
+            background: #fd5e53;
+        }
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 226, 89, 0.8);
+            border: none;
+            font-size: 32px;
+            color: #d35400;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+        .slideshow-arrow.left { left: 18px; }
+        .slideshow-arrow.right { right: 18px; }
+        .slideshow-arrow:hover { background: #ffd200; }
+        .slideshow-dots {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 11;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffe259;
+            border: 2px solid #d35400;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: background 0.2s, opacity 0.2s;
+        }
+        .dot.active {
+            background: #ff7675;
+            opacity: 1;
+        }
+        @media (max-width: 992px) {
+            .slide img { width: 200px; height: 140px; margin: 0 10px; }
+            .slide { height: 200px; }
+        }
+        @media (max-width: 600px) {
+            .slide { flex-direction: column; height: 320px; }
+            .slide img { width: 90%; height: 120px; margin: 0 0 10px 0; }
+        }
+
+        /* Summer Float Ad */
+        .summer-float-ad {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 4px 18px rgba(67, 206, 162, 0.18);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 22px;
+            z-index: 1200;
+            font-size: 16px;
+            animation: floatIn 1s;
+        }
+        .summer-float-icon {
+            font-size: 26px;
+        }
+        .summer-float-btn {
+            background: #ffe259;
+            color: #d35400;
+            border-radius: 18px;
+            padding: 4px 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            margin-left: 8px;
+            box-shadow: 0 2px 8px rgba(255, 226, 89, 0.15);
+            transition: background 0.2s;
+        }
+        .summer-float-btn:hover {
+            background: #ffd200;
+        }
+        @keyframes floatIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 600px) {
+            .summer-float-ad { bottom: 15px; right: 15px; font-size: 14px; padding: 8px 12px; }
+            .summer-float-icon { font-size: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -844,6 +1099,13 @@
         <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=900" alt="Shopping Experience" class="hero-image">
     </section>
 
+    <!-- Summer Banner -->
+    <div class="summer-banner">
+        <span class="summer-icon">☀️</span>
+        <span class="summer-text">Hot July Deals! Up to <b>70% Off</b> – <a href="#" class="summer-banner-btn">Shop Now</a></span>
+        <span class="summer-icon">🏖️</span>
+    </div>
+
     <!-- Categories Section -->
     <section class="categories">
         <div class="container">
@@ -883,6 +1145,55 @@
                         <a href="#" class="btn btn-outline">Shop Now</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Summer Ad Block -->
+    <section class="summer-ad">
+        <div class="summer-ad-content">
+            <div class="summer-ad-text">
+                <h3><span class="summer-icon">🍉</span> Buy 1 Get 1 Free on Summer Essentials! <span class="summer-icon">🍦</span></h3>
+                <p>Stock up for the season – limited time only!</p>
+                <a href="#" class="summer-ad-btn">Grab the Deal</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Summer Essentials" class="summer-ad-img">
+        </div>
+    </section>
+
+    <!-- Summer Slideshow -->
+    <section class="summer-slideshow">
+        <div class="slideshow-container">
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Beachwear">
+                <div class="slide-caption">
+                    <h3>Beachwear Bonanza</h3>
+                    <p>Up to 60% Off on all swimwear!</p>
+                    <a href="#" class="slide-btn">Shop Beachwear</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Sunglasses">
+                <div class="slide-caption">
+                    <h3>Sunny Sunglasses</h3>
+                    <p>Flash Sale: 20% Off All Sunglasses</p>
+                    <a href="#" class="slide-btn">Shop Sunglasses</a>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=600&q=80" alt="Summer Shoes">
+                <div class="slide-caption">
+                    <h3>Cool Summer Shoes</h3>
+                    <p>Buy 1 Get 1 50% Off on Sandals</p>
+                    <a href="#" class="slide-btn">Shop Shoes</a>
+                </div>
+            </div>
+            <button class="slideshow-arrow left">&#10094;</button>
+            <button class="slideshow-arrow right">&#10095;</button>
+            <div class="slideshow-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
     </section>
@@ -1030,6 +1341,13 @@
             <i class="fab fa-twitter"></i>
             <span class="tooltip">Follow us on Twitter</span>
         </a>
+    </div>
+
+    <!-- Summer Float Ad -->
+    <div class="summer-float-ad">
+        <span class="summer-float-icon">🌴</span>
+        <span class="summer-float-text">Flash Sale: 20% Off Sunglasses!</span>
+        <a href="#" class="summer-float-btn">Shop Now</a>
     </div>
 
     <!-- Footer -->
@@ -1181,6 +1499,63 @@
                 });
             });
         });
+
+        // Summer Slideshow Functionality
+        (function() {
+            const slides = document.querySelectorAll('.summer-slideshow .slide');
+            const dots = document.querySelectorAll('.summer-slideshow .dot');
+            const leftArrow = document.querySelector('.summer-slideshow .slideshow-arrow.left');
+            const rightArrow = document.querySelector('.summer-slideshow .slideshow-arrow.right');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                    dots[i].classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                showSlide((currentSlide + 1) % slides.length);
+            }
+
+            function prevSlide() {
+                showSlide((currentSlide - 1 + slides.length) % slides.length);
+            }
+
+            function startAutoSlide() {
+                slideInterval = setInterval(nextSlide, 4000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(slideInterval);
+            }
+
+            if (slides.length) {
+                showSlide(0);
+                startAutoSlide();
+
+                rightArrow.addEventListener('click', () => {
+                    nextSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+                leftArrow.addEventListener('click', () => {
+                    prevSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(i);
+                        stopAutoSlide();
+                        startAutoSlide();
+                    });
+                });
+            }
+        })();
     </script>
 </body>
 </html>
